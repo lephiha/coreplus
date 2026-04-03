@@ -1,0 +1,484 @@
+// ===================================
+// CORE+ FITNESS CLUB - MAIN JAVASCRIPT
+// ===================================
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ===================================
+    // HEADER SCROLL EFFECT
+    // ===================================
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // ===================================
+    // SIDEBAR MENU
+    // ===================================
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('closeBtn');
+    const overlay = document.getElementById('overlay');
+
+    // Open sidebar
+    if (menuBtn) {
+        menuBtn.addEventListener('click', function() {
+            sidebar.classList.add('open');
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+    }
+
+    // Close sidebar
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    // Close sidebar when clicking overlay
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            closeSidebar();
+            closeSearch();
+        });
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // ===================================
+    // SEARCH OVERLAY
+    // ===================================
+    const searchBtn = document.getElementById('searchBtn');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchClose = document.getElementById('searchClose');
+    const searchInput = document.querySelector('.search-input');
+
+    // Open search
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+            searchOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            // Focus on search input after animation
+            setTimeout(() => {
+                if (searchInput) searchInput.focus();
+            }, 300);
+        });
+    }
+
+    // Close search
+    if (searchClose) {
+        searchClose.addEventListener('click', closeSearch);
+    }
+
+    function closeSearch() {
+        searchOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+        if (searchInput) searchInput.value = ''; // Clear search input
+    }
+
+    // Close search on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSearch();
+            closeSidebar();
+        }
+    });
+
+    // Handle search form submit
+    const searchForm = document.querySelector('.search-container');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            if (query) {
+                console.log('Searching for:', query);
+                // Add your search functionality here
+                alert('Tìm kiếm: ' + query);
+            }
+        });
+    }
+
+    // ===================================
+    // SMOOTH SCROLL FOR NAVIGATION
+    // ===================================
+    const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const headerHeight = header.offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ===================================
+    // BMI CALCULATOR
+    // ===================================
+    const bmiForm = document.getElementById('bmiForm');
+    const bmiResult = document.getElementById('bmiResult');
+
+    if (bmiForm) {
+        bmiForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get input values
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const age = parseInt(document.getElementById('age').value);
+
+            // Validate inputs
+            if (!height || !weight || !age || height <= 0 || weight <= 0 || age <= 0) {
+                bmiResult.innerHTML = '<p style="color: #e74c3c;">Vui lòng nhập thông tin hợp lệ!</p>';
+                return;
+            }
+
+            // Calculate BMI
+            const heightInMeters = height / 100;
+            const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
+
+            // Determine BMI category and color
+            let category = '';
+            let color = '';
+            let advice = '';
+
+            if (bmi < 18.5) {
+                category = 'Thiếu cân';
+                color = '#3498db';
+                advice = 'Bạn nên tăng cân và xây dựng cơ bắp.';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                category = 'Bình thường';
+                color = '#27ae60';
+                advice = 'Cân nặng của bạn rất tốt! Hãy duy trì.';
+            } else if (bmi >= 25 && bmi < 30) {
+                category = 'Thừa cân';
+                color = '#f39c12';
+                advice = 'Bạn nên giảm cân và tập luyện nhiều hơn.';
+            } else {
+                category = 'Béo phì';
+                color = '#e74c3c';
+                advice = 'Bạn nên tham khảo ý kiến chuyên gia dinh dưỡng.';
+            }
+
+            // Display result
+            bmiResult.innerHTML = `
+                <div style="padding: 20px; background: rgba(231, 76, 60, 0.1); border-left: 4px solid ${color}; border-radius: 4px;">
+                    <h4 style="color: ${color}; margin-bottom: 10px; font-size: 20px;">Chỉ số BMI của bạn: ${bmi}</h4>
+                    <p style="margin-bottom: 8px;"><strong>Phân loại:</strong> ${category}</p>
+                    <p style="margin-bottom: 0; opacity: 0.9;">${advice}</p>
+                </div>
+            `;
+
+            // Smooth scroll to result
+            bmiResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+    }
+
+    // ===================================
+    // CONTACT FORM
+    // ===================================
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const email = formData.get('email');
+            const message = formData.get('message');
+
+            // Validate
+            if (!name || !phone || !email || !message) {
+                alert('Vui lòng điền đầy đủ thông tin!');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Email không hợp lệ!');
+                return;
+            }
+
+            // Phone validation (Vietnamese format)
+            const phoneRegex = /^(0|\+84)[0-9]{9}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert('Số điện thoại không hợp lệ!');
+                return;
+            }
+
+            // Success message
+            alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi trong thời gian sớm nhất.');
+            
+            // Reset form
+            contactForm.reset();
+
+            // Here you would normally send the data to a server
+            console.log('Form submitted:', { name, phone, email, message });
+        });
+    }
+
+    // ===================================
+    // PRICING CARDS HOVER EFFECT
+    // ===================================
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    
+    pricingCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            // Remove active class from all cards
+            pricingCards.forEach(c => c.classList.remove('active'));
+            // Add active class to hovered card
+            this.classList.add('active');
+        });
+    });
+
+    // ===================================
+    // ADD TO CART FUNCTIONALITY
+    // ===================================
+    const addCartButtons = document.querySelectorAll('.add-cart-btn');
+    
+    addCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productCard = this.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent;
+            const productPrice = productCard.querySelector('.product-price').textContent;
+
+            // Show notification
+            showNotification(`Đã thêm "${productName}" vào giỏ hàng!`);
+
+            // Add animation to button
+            this.textContent = '✓ ĐÃ THÊM';
+            this.style.background = '#27ae60';
+            
+            setTimeout(() => {
+                this.textContent = 'THÊM VÀO GIỎ';
+                this.style.background = '';
+            }, 2000);
+
+            // Here you would normally add the product to a cart array/object
+            console.log('Added to cart:', { productName, productPrice });
+        });
+    });
+
+    // ===================================
+    // JOIN NOW BUTTONS
+    // ===================================
+    const joinButtons = document.querySelectorAll('.join-btn');
+    
+    joinButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const pricingCard = this.closest('.pricing-card');
+            const planName = pricingCard.querySelector('.pricing-title').textContent;
+            const planPrice = pricingCard.querySelector('.pricing-price').textContent;
+
+            // Show confirmation
+            const confirmed = confirm(`Bạn muốn đăng ký gói ${planName} với giá ${planPrice}?`);
+            
+            if (confirmed) {
+                showNotification(`Cảm ơn! Chúng tôi sẽ liên hệ với bạn về gói ${planName}.`);
+                // Scroll to contact form
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+
+    // ===================================
+    // CTA BUTTONS IN SLIDES
+    // ===================================
+    const ctaButtons = document.querySelectorAll('.cta-btn');
+    
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Scroll to pricing section
+            const pricingSection = document.getElementById('pricing');
+            if (pricingSection) {
+                const headerHeight = header.offsetHeight;
+                const targetPosition = pricingSection.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ===================================
+    // NOTIFICATION SYSTEM
+    // ===================================
+    function showNotification(message) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10000;
+            animation: slideInRight 0.3s ease-out;
+            font-weight: 600;
+        `;
+
+        // Add animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add to DOM
+        document.body.appendChild(notification);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.3s ease-out';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
+
+    // ===================================
+    // ANIMATE ON SCROLL
+    // ===================================
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+    });
+
+    // ===================================
+    // LAZY LOADING IMAGES
+    // ===================================
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+
+    // ===================================
+    // PERFORMANCE: Debounce scroll events
+    // ===================================
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // ===================================
+    // LOG INITIALIZATION
+    // ===================================
+    console.log('%c🏋️ CORE+ Fitness Club Initialized! 💪', 'color: #e74c3c; font-size: 20px; font-weight: bold;');
+    console.log('%cWebsite đang chạy tốt! Chúc bạn có trải nghiệm tuyệt vời! 🎉', 'color: #27ae60; font-size: 14px;');
+
+});
+
+// ===================================
+// PREVENT ZOOM ON DOUBLE TAP (Mobile)
+// ===================================
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+const programVideos = document.querySelectorAll('.program-video');
+
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const video = entry.target;
+            video.play();
+        } else {
+            entry.target.pause();
+        }
+    });
+}, { threshold: 0.5 });
+
+programVideos.forEach(video => {
+    videoObserver.observe(video);
+});
