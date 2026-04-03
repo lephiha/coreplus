@@ -482,3 +482,117 @@ const videoObserver = new IntersectionObserver((entries) => {
 programVideos.forEach(video => {
     videoObserver.observe(video);
 });
+
+// ================================
+// ULTRA SMOOTH COUNTER
+// ================================
+function animateCounter(el, duration = 2000) {
+    const text = el.textContent.trim();
+
+    const target = parseInt(text.replace(/\D/g, '')) || 0;
+    const suffix = text.replace(/[0-9]/g, '');
+
+    let startTime = null;
+
+    function animate(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = (timestamp - startTime) / duration;
+
+        // clamp
+        const t = Math.min(progress, 1);
+
+        // easeOutCubic (rất mượt)
+        const ease = 1 - Math.pow(1 - t, 3);
+
+        const value = Math.floor(ease * target);
+
+        // ❗ CHỈ format khi cần (giảm lag)
+        el.textContent = value + suffix;
+
+        if (t < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            el.textContent = target + suffix;
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// ================================
+// OBSERVER (trigger đúng lúc)
+// ================================
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const nums = entry.target.querySelectorAll('.stat-number');
+
+            nums.forEach(el => animateCounter(el));
+
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.5 // đợi hiện rõ mới chạy → đỡ lag
+});
+
+// ================================
+// INIT
+// ================================
+window.addEventListener('load', () => {
+    const stats = document.querySelector('.stats');
+    if (stats) counterObserver.observe(stats);
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    // HERO VIDEO
+    const heroVideo = document.querySelector('.hero-video');
+
+    if (heroVideo) {
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
+
+        // loop mượt
+        heroVideo.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        });
+    }
+
+    // PROGRAM VIDEOS
+    const programVideos = document.querySelectorAll('.program-video');
+
+    programVideos.forEach(function (video) {
+        video.muted = true;
+        video.play().catch(() => {});
+
+        video.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        });
+    });
+
+    // OVERLAY CLICK PLAY (testimonial)
+    const overlays = document.querySelectorAll('.video-overlay');
+
+    overlays.forEach(function (overlay) {
+        overlay.addEventListener('click', function () {
+            const video = this.previousElementSibling;
+
+            if (video) {
+                video.play();
+                this.style.opacity = '0';
+            }
+        });
+    });
+
+});
+
+const allVideos = document.querySelectorAll('video'); 
+allVideos.forEach(function(video) { 
+    video.addEventListener('click', function() { 
+    if (video.paused) 
+        { video.play(); } else { video.pause(); } }); });
+

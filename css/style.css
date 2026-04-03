@@ -1797,3 +1797,338 @@ footer {
     font-size: 14px;
 }
 
+/* About Section */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coach-photo {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border: 3px solid #ff1654;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(255, 22, 84, 0.3);
+}
+
+.about-image:hover .coach-photo {
+    transform: scale(1.05);
+}
+
+.about-text h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: var(--pink);
+}
+
+.about-text p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555;
+    font-weight: 500; 
+    margin-bottom: 15px;
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 16px; /* bo tròn */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+/* số */
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #000; /* BLACK */
+}
+
+/* label */
+.stat-label {
+    font-size: 13px;
+    color: #ff2d75; /* PINK */
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Testimonials Section */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: var(--light-gray);
+    padding: 35px;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 80px;
+    color: var(--pink);
+    opacity: 0.2;
+    font-family: Georgia, serif;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--pink), #ff3385);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.author-info h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.author-info p {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Testimonial Video Cards */
+.testimonial-video {
+    background: var(--light-gray);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 0, 102, 0.2);
+    height: 300px;
+}
+
+.testimonial-video:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 0, 102, 0.3);
+}
+
+.testimonial-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(255, 0, 102, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.testimonial-video.playing .video-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.testimonial-video:hover .video-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(255, 0, 102, 0.3));
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--pink), #ff3385);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(255, 0, 102, 0.5);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(255, 0, 102, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 15px 40px rgba(255, 0, 102, 0.7);
+    }
+}
+
+.testimonial-video:hover .play-button {
+    transform: scale(1.2);
+}
+
+/* Transformation Section */
+.transformation-section {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding-top: 80px;
+    border-top: 2px solid var(--light-gray);
+}
+
+.transformation-title {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--pink);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.transformation-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: var(--light-gray);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(255, 0, 102, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.transformation-card:hover {
+    transform: translateY(-10px);
+}
+
+.transformation-image {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.transform-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.transformation-card:hover .transform-photo {
+    transform: scale(1.05);
+}
+
+.transformation-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(135deg, var(--pink), #ff3385);
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 0, 102, 0.5);
+    text-align: center;
+}
+
+.badge-number {
+    display: block;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.badge-text {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.transformation-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.transformation-content h4 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--pink);
+}
+
+.transformation-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.transformation-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--gray);
+}
