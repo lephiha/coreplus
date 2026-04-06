@@ -588,7 +588,7 @@ function sendToEmail(event) {
 }
 
 // ===================================
-// SIDEBAR — 3 gạch mở
+// SIDEBAR — 3 gạch
 // ===================================
 const menuBtn = document.getElementById('menuBtn');
 const sidebar = document.getElementById('sidebar');
@@ -608,13 +608,10 @@ if (menuBtn) {
         document.body.style.overflow = 'hidden';
     });
 }
-
-if (closeBtn) {
-    closeBtn.addEventListener('click', closeSidebar);
-}
+if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
 
 // ===================================
-// MOBILE NAV — grid icon mở
+// MOBILE NAV — grid icon
 // ===================================
 const gridBtn = document.getElementById('gridBtn');
 const mobileNav = document.getElementById('mobileNav');
@@ -633,17 +630,13 @@ if (gridBtn) {
         document.body.style.overflow = 'hidden';
     });
 }
-
-if (mobileNavClose) {
-    mobileNavClose.addEventListener('click', closeMobileNav);
-}
-
+if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
 document.querySelectorAll('.mobile-nav-links a').forEach(link => {
     link.addEventListener('click', closeMobileNav);
 });
 
 // ===================================
-// OVERLAY + ESC — đóng tất cả
+// OVERLAY + ESC
 // ===================================
 if (overlay) {
     overlay.addEventListener('click', () => {
@@ -651,10 +644,6 @@ if (overlay) {
         closeMobileNav();
     });
 }
-
 document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-        closeSidebar();
-        closeMobileNav();
-    }
+    if (e.key === 'Escape') { closeSidebar(); closeMobileNav(); }
 });
