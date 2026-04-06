@@ -622,3 +622,25 @@ function sendToEmail(event) {
     // reset form
     document.getElementById('contactForm').reset();
 }
+
+// Mobile Nav
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavClose = document.getElementById('mobileNavClose');
+
+menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+    overlay.classList.toggle('open');
+});
+
+mobileNavClose.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    overlay.classList.remove('open');
+});
+
+// Đóng khi click link
+document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        overlay.classList.remove('open');
+    });
+});
