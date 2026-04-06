@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const indicators = document.querySelectorAll('.indicator');
     let currentSlide = 0;
     let slideInterval;
-    const slideDelay = 8000; 
+    const slideDelay = 5000; 
     let isTransitioning = false;
 
     // ===================================

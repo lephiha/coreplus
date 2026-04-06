@@ -9,6 +9,7 @@
     
    
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -17,7 +18,6 @@
     <!-- Header -->
     <header id="header">
         <div class="logo">
-            <!-- Logo -->
             <a href="index.html" class="logo">
                 <img src="./images/logo.jpg" alt="Core+ Logo">
                 <div class="logo-text">
@@ -32,12 +32,11 @@
         <nav class="main-nav">
             <a href="#home">Trang Chủ</a>
             <a href="#services">Dịch Vụ</a>
+            <a href="#about">Huấn Luyện Viên</a>
             <a href="#schedule">Lịch Tập</a>
-            <a href="#training">Huấn Luyện</a>
             <a href="#testimonials">Nhận Xét</a>
-            <a href="#pricing">Bảng Giá</a>
+            <a href="#gym-locations">Cơ Sở Phòng Tập</a>
             <a href="#contact">Liên Hệ</a>
-            <a href="#blog">Blog</a>
         </nav>
         
         <div class="header-icons">
@@ -527,70 +526,257 @@
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing" class="pricing">
-        <h2 class="section-title">BẢNG <span>GIÁ</span></h2>
-        <p class="section-desc">Chọn gói tập hoàn hảo cho hành trình fitness của bạn.</p>
-        
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3 class="pricing-title">CƠ BẢN</h3>
-                <div class="pricing-price">699.000₫<span style="font-size: 20px;">/tháng</span></div>
-                <ul class="pricing-features">
-                    <li>Sử dụng thiết bị gym</li>
-                    <li>Tủ khóa cá nhân</li>
-                    <li>1 vé khách mời/tháng</li>
-                    <li>WiFi miễn phí</li>
-                </ul>
-                <button class="join-btn">ĐĂNG KÝ NGAY</button>
-            </div>
-            <div class="pricing-card">
-                <h3 class="pricing-title">CAO CẤP</h3>
-                <div class="pricing-price">1.199.000₫<span style="font-size: 20px;">/tháng</span></div>
-                <ul class="pricing-features">
-                    <li>Tất cả tính năng Cơ Bản</li>
-                    <li>Tham gia lớp tập nhóm</li>
-                    <li>3 vé khách mời/tháng</li>
-                    <li>Tư vấn dinh dưỡng</li>
-                </ul>
-                <button class="join-btn">ĐĂNG KÝ NGAY</button>
-            </div>
-            <div class="pricing-card">
-                <h3 class="pricing-title">VIP</h3>
-                <div class="pricing-price">1.899.000₫<span style="font-size: 20px;">/tháng</span></div>
-                <ul class="pricing-features">
-                    <li>Tất cả tính năng Cao Cấp</li>
-                    <li>Buổi tập PT riêng</li>
-                    <li>Vé khách mời không giới hạn</li>
-                    <li>Đặt lịch ưu tiên</li>
-                </ul>
-                <button class="join-btn">ĐĂNG KÝ NGAY</button>
-            </div>
+    <!-- Gym Locations Section -->
+    <section class="section gym-locations" id="gym-locations">
+        <h2 class="section-title highlight-title fade-in">HỆ THỐNG PHÒNG TẬP FITX</h2>
+        <p class="section-subtitle fade-in">
+            Tập ở bất cứ đâu – Luôn có FITX gần bạn 
+        </p>
+        <div class="locations-container fade-in">
+            <a href="https://maps.app.goo.gl/wB7t8YLKHPh4MKk37" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 01 (FITX Victoria Văn Phú)</h4>
+                    <p>Tầng 5, Toà V2 – Victoria, KĐT Văn Phú, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/fbjvmyEnGJqZuiY19" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 02 (FITX K-Park Văn Phú)</h4>
+                    <p>Tầng 27, K1 The K-Park, Văn Phú, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/oZXYKaXptDANocf78" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 03 (FITX Terra An Hưng)</h4>
+                    <p>V10-A07 Terra An Hưng, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/1KTFS5ZgqEUzA4ji7" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 05 (FITX Thái Bình)</h4>
+                    <p>TP Thái Bình</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/fbjvmyEnGJqZuiY19" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 06 (FITX K2-K-Park Văn Phú)</h4>
+                    <p>K2 K-Park, Văn Phú, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/aTxyBHXwpwmGYwp98" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 07 (FITX Trần Cao Vân)</h4>
+                    <p>Số 7 Trần Cao Vân, Hai Bà Trưng, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/17CpTJPq635am3bo7" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 08 (FITX Rùa Hà – Thanh Oai)</h4>
+                    <p>Số 130, sau Ao Rùa Hà, Thanh Thụy, Thanh Oai, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/QBvHxw7Px76w18ZQ8" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 09 (FITX Văn Phú)</h4>
+                    <p>TT17 Văn Phú (ngã tư Hoàng Đồn Hòa – Hạ Trì), Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/poWtXURRkkNNj8b56" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 10 (FITX Chương Mỹ)</h4>
+                    <p>Phụng Châu, Chương Mỹ, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/fo5Q6b1mNWquDsQz9" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 12 (FITX Bắc Ninh)</h4>
+                    <p>37 Minh Khai, TP Bắc Ninh</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/yq76vZA46upfQmKH8" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 13 (FITX Hà Trung – Thanh Hoá)</h4>
+                    <p>Hà Trung, Thanh Hoá</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/z2rofjFtz1fnN3xQ9" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 16 (FITX Trần Phú – Thái Bình)</h4>
+                    <p>43 Trần Phú, TP Thái Bình</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/MhpGjGAYud2f5uhV8" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 19 (FITX Tổ Hữu – Văn Phúc)</h4>
+                    <p>LK DM14-1, Tổ Hữu, Văn Phúc, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/DF5p9KmAxDjWqY4x7" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 20 (FITX Đốc Đen – Thái Bình)</h4>
+                    <p>Đốc Đen, TP Thái Bình</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/dixhXUiTZFw1zrfX6" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 22 (FITX KĐT Petro – Thái Bình)</h4>
+                    <p>40 đường số 11, KĐT Petro, TP Thái Bình</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/e8o33pEViQGPSDvv6" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 23 (FITX Tổ Hiệu – Hà Đông)</h4>
+                    <p>04 Tổ Hiến Thành, Văn Quán, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/6q7EQ18383R9Denw5" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 25 (FITX Thái Nguyên)</h4>
+                    <p>Tầng 6, 654 Bắc Kạn, TP Thái Nguyên</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/wB7t8YLKHPh4MKk37" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 26 (FITX V2 Victoria Văn Phú)</h4>
+                    <p>V2 Victoria Văn Phú, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/wwM55VZ42PawyvVJ8" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>FitX 36 (FITX KĐT Việt Hưng)</h4>
+                    <p>KĐT Việt Hưng, Long Biên, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/oZXYKaXptDANocf78" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>Tâm An (Terra An Hưng)</h4>
+                    <p>V8-A02 Terra An Hưng, Hà Đông, Hà Nội</p>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/LFn26irWfoXgwHfKA" target="_blank" class="location-item">
+                <div class="location-icon">💎</div>
+                <div class="location-info">
+                    <h4>Core+ (Nguyễn Du)</h4>
+                    <p>85 Nguyễn Du, Hai Bà Trưng, Hà Nội</p>
+                </div>
+            </a>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">LIÊN HỆ <span>CHÚNG TÔI</span></h2>
-        <p class="section-desc">Có câu hỏi? Chúng tôi rất mong được lắng nghe từ bạn. Gửi tin nhắn cho chúng tôi!</p>
-        
-        <div class="contact-content">
-            <form class="contact-form" id="contactForm">
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <h2 class="section-title fade-in">LIÊN HỆ VỚI TÔI</h2>
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h3>Thông tin liên hệ</h3>
+                <div class="contact-methods">
+                    <div class="contact-method" onclick="window.open('tel:0907776855')">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Hotline</h4>
+                        <p>0907.776.855</p>
+                    </div>
+                </div>
+                <div class="contact-method" onclick="window.open('mailto:minhtanfitx@gmail.com')">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>khanhlyfitx@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-method" onclick="window.open('https://www.facebook.com/messages/t/548879625', '_blank')">
+                    <div class="contact-icon">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Facebook Messenger</h4>
+                        <p>Chat trực tiếp qua Facebook</p>
+                    </div>
+                </div>
+                <div class="contact-method" onclick="window.open('http://zaloapp.com/qr/p/179fopxpahncp', '_blank')">
+                    <div class="contact-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Zalo</h4>
+                        <p>Chat trực tiếp qua Zalo</p>
+                    </div>
+                </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Địa chỉ</h4>
+                            <a href="https://maps.app.goo.gl/QBvHxw7Px76w18ZQ8" target="_blank" class="location-item">
+                        <p>TT17 Văn Phú (Ngã tư Hoàng Đôn Hòa - Hà Trì), Hà Đông, Hà Nội</p>
+                        
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container fade-in">
+                <form class="contact-form" id="contactForm" onsubmit="sendToEmail(event)">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Tên của bạn *" required>
+                    <input type="text" id="userName" placeholder="Họ và tên *" required>
+                </div>
+                <!-- <div class="form-group">
+                    <input type="email" id="userEmail" placeholder="Email *" required>
+                </div> -->
+                <div class="form-group">
+                    <input type="tel" id="userPhone" placeholder="Số điện thoại *" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Số điện thoại *" required>
+                    <textarea id="userMessage" placeholder="Mục tiêu của bạn là gì? (Giảm cân, tăng cân, cải thiện vóc dáng...)" required></textarea>
                 </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Địa chỉ email *" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="Tin nhắn của bạn *" required></textarea>
-                </div>
+                <button type="submit" class="submit-btn">GỬI TIN NHẮN</button>
             </form>
-            <p style="color: #666; margin-bottom: 20px;">Chúng tôi không bán, chia sẻ, trao đổi thông tin của bạn với bất kỳ ai. Chúng tôi không gửi thư rác.</p>
-            <button type="submit" class="submit-btn" form="contactForm">GỬI NGAY ➕</button>
+            </div>
         </div>
     </section>
 
@@ -599,7 +785,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>VỀ CORE+</h3>
-                <p>Chúng tôi cam kết cung cấp trải nghiệm fitness tốt nhất với thiết bị đẳng cấp thế giới và huấn luyện viên chuyên nghiệp.</p>
+                <p>Chúng tôi cam kết cung cấp trải nghiệm fitness tốt nhất với các huấn luyện viên chuyên nghiệp.</p>
             </div>
             <div class="footer-section">
                 <h3>LIÊN KẾT NHANH</h3>
@@ -613,16 +799,16 @@
             <div class="footer-section">
                 <h3>THÔNG TIN LIÊN HỆ</h3>
                 <ul>
-                    <li>📍 224 Đường Trần Hưng Đạo, Hà Nội</li>
-                    <li>📞 (024) 3xxx-xxxx</li>
-                    <li>✉️ info@coreplus.vn</li>
+                    <li>📍 TT17 Văn Phú (Ngã tư Hoàng Đôn Hòa - Hà Trì), Hà Đông, Hà Nội</li>
+                    <li>📞 0907.776.855</li>
+                    <li>✉️ khanhlyfitx@gmail.com</li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>GIỜ MỞ CỬA</h3>
                 <ul>
-                    <li>Thứ 2 - Thứ 6: 6:00 - 22:00</li>
-                    <li>Sat - Sun: 7:00 AM - 9:00 PM</li>
+                    <li>Thứ 2 - Thứ 6: 5:00 - 22:00</li>
+                    <li>Thứ 7 - Chủ nhật: 5:00 - 21:00</li>
                 </ul>
             </div>
         </div>
@@ -635,35 +821,68 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="logo">
-                <div class="logo-icon">X</div>
+                <img src="./images/logo.jpg" alt="Core+" style="width:44px; height:44px; border-radius:50%; object-fit:cover;">
                 <div class="logo-text">
-                    <div>
-                        <span>CORE</span><span>+</span>
+                    <div style="font-size:20px; font-weight:900; letter-spacing:1px;">
+                        <span style="color:#222;">CORE</span><span style="color:#E74C3C;">+</span>
                     </div>
-                    <div class="logo-subtitle">FITNESS CLUB</div>
+                    <div class="logo-subtitle" style="font-size:10px; letter-spacing:2px; color:#999;">FITNESS CLUB</div>
                 </div>
             </div>
             <button class="close-btn" id="closeBtn">✕</button>
         </div>
-        
+
         <div class="sidebar-content">
-            <h3>GET IN TOUCH</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span class="contact-icon">📍</span>
-                    <span>224 West 20th St, New York<br>NY 10011, USA</span>
+
+            <h3 style="font-size:13px; font-weight:800; letter-spacing:2px; color:#222; margin-bottom:20px;">GET IN TOUCH</h3>
+
+            <div class="contact-info" style="display:flex; flex-direction:column; gap:14px; margin-bottom:28px;">
+                <div class="contact-item" style="display:flex; align-items:flex-start; gap:12px;">
+                    <span style="font-size:16px; margin-top:1px;">📍</span>
+                    <span style="font-size:14px; color:#444; line-height:1.5;">TT17 Văn Phú (Ngã tư Hoàng Đôn Hòa – Hà Trì),<br>Hà Đông, Hà Nội</span>
                 </div>
-                <div class="contact-item">
-                    <span class="contact-icon">📞</span>
-                    <span>(123) 498-4600</span>
+                <div class="contact-item" style="display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:16px;">📞</span>
+                    <span style="font-size:14px; color:#444;">0907.776.855</span>
                 </div>
-                <div class="contact-item">
-                    <span class="contact-icon">✉️</span>
-                    <span>info@fitx06.com</span>
+                <div class="contact-item" style="display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:16px;">✉️</span>
+                    <span style="font-size:14px; color:#444;">khanhlyfitx@gmail.com</span>
                 </div>
             </div>
-            
-            <div style="color: #E74C3C; font-weight: 600; margin: 20px 0;">@core+</div>
+
+            <div style="color:#E74C3C; font-weight:700; font-size:14px; letter-spacing:1px; margin-bottom:28px;">@core+</div>
+
+            <hr style="border:none; border-top:1px solid #eee; margin-bottom:24px;">
+
+            <!-- BMI Button -->
+            <h3 style="font-size:13px; font-weight:800; letter-spacing:2px; color:#222; margin-bottom:14px;">CHỈ SỐ BMI</h3>
+            <p style="font-size:13px; color:#888; margin-bottom:16px; line-height:1.5;">Kiểm tra chỉ số cơ thể của bạn ngay tại đây.</p>
+            <button onclick="openBMI()" style="
+                width:100%;
+                background:#E74C3C;
+                color:#fff;
+                border:none;
+                padding:14px;
+                border-radius:8px;
+                font-weight:800;
+                font-size:13px;
+                cursor:pointer;
+                letter-spacing:2px;
+            ">⚡ TÍNH NGAY</button>
+
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:28px;">
+                <div style="aspect-ratio:1; background:#f5f5f5; border-radius:6px; overflow:hidden;">
+                    <img src="./images/fit1-1.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.style.background='#eee'">
+                </div>
+                <div style="aspect-ratio:1; background:#f5f5f5; border-radius:6px; overflow:hidden;">
+                    <img src="./images/fit-group.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.style.background='#eee'">
+                </div>
+                <div style="aspect-ratio:1; background:#f5f5f5; border-radius:6px; overflow:hidden;">
+                    <img src="./images/fit-online.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.style.background='#eee'">
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -676,11 +895,146 @@
         </div>
     </div>
 
+    <!-- BMI Overlay -->
+    <div class="bmi-overlay" id="bmiOverlay" style="
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+    ">
+        <div style="
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 36px 32px;
+            width: 90%;
+            max-width: 420px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        ">
+            <button onclick="closeBMI()" style="
+                position: absolute;
+                top: 16px; right: 16px;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 20px;
+                cursor: pointer;
+                width: 32px; height: 32px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.1);
+                display: flex; align-items: center; justify-content: center;
+            ">✕</button>
+
+            <h2 style="color:#fff; font-size:20px; font-weight:900; margin-bottom:4px; letter-spacing:1px;">TÍNH CHỈ SỐ BMI</h2>
+            <p style="color:rgba(255,255,255,0.5); font-size:13px; margin-bottom:24px;">Nhập thông tin để kiểm tra chỉ số cơ thể</p>
+
+            <div style="display:flex; flex-direction:column; gap:14px;">
+                <div>
+                    <label style="color:rgba(255,255,255,0.6); font-size:12px; letter-spacing:1px; display:block; margin-bottom:6px;">CHIỀU CAO (CM)</label>
+                    <input type="number" id="bmi-h" placeholder="Ví dụ: 165" style="
+                        width:100%; padding:12px 14px;
+                        border-radius:8px;
+                        border:1px solid rgba(255,255,255,0.15);
+                        background:rgba(255,255,255,0.07);
+                        color:#fff; font-size:15px;
+                        box-sizing:border-box;
+                    ">
+                </div>
+                <div>
+                    <label style="color:rgba(255,255,255,0.6); font-size:12px; letter-spacing:1px; display:block; margin-bottom:6px;">CÂN NẶNG (KG)</label>
+                    <input type="number" id="bmi-w" placeholder="Ví dụ: 60" style="
+                        width:100%; padding:12px 14px;
+                        border-radius:8px;
+                        border:1px solid rgba(255,255,255,0.15);
+                        background:rgba(255,255,255,0.07);
+                        color:#fff; font-size:15px;
+                        box-sizing:border-box;
+                    ">
+                </div>
+                <div>
+                    <label style="color:rgba(255,255,255,0.6); font-size:12px; letter-spacing:1px; display:block; margin-bottom:6px;">TUỔI</label>
+                    <input type="number" id="bmi-a" placeholder="Ví dụ: 25" style="
+                        width:100%; padding:12px 14px;
+                        border-radius:8px;
+                        border:1px solid rgba(255,255,255,0.15);
+                        background:rgba(255,255,255,0.07);
+                        color:#fff; font-size:15px;
+                        box-sizing:border-box;
+                    ">
+                </div>
+            </div>
+
+            <button onclick="calcBMIOverlay()" style="
+                width:100%; margin-top:20px;
+                background:#E74C3C; color:#fff;
+                border:none; padding:14px;
+                border-radius:8px;
+                font-weight:900; font-size:14px;
+                cursor:pointer; letter-spacing:1.5px;
+            ">TÍNH TOÁN →</button>
+
+            <!-- Kết quả -->
+            <div id="bmi-result" style="display:none; margin-top:20px; text-align:center;">
+                <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
+                    <div style="color:rgba(255,255,255,0.5); font-size:12px; letter-spacing:1px; margin-bottom:8px;">CHỈ SỐ BMI CỦA BẠN</div>
+                    <div id="bmi-num" style="font-size:52px; font-weight:900; color:#E74C3C; line-height:1;"></div>
+                    <div id="bmi-tag" style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;"></div>
+                    <div id="bmi-bar-wrap" style="margin-top:16px; height:8px; border-radius:4px; background:linear-gradient(to right,#3498db,#2ecc71,#f39c12,#e74c3c); position:relative;">
+                        <div id="bmi-marker" style="position:absolute; top:-4px; width:16px; height:16px; border-radius:50%; background:#fff; border:3px solid #E74C3C; transform:translateX(-50%); transition:left 0.4s ease;"></div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:11px; color:rgba(255,255,255,0.4);">
+                        <span>Thiếu cân</span><span>BT</span><span>Thừa cân</span><span>Béo phì</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
     <!-- JavaScript -->
     <script src="js/slider.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        function openBMI() {
+            var o = document.getElementById('bmiOverlay');
+            o.style.display = 'flex';
+            // đóng sidebar nếu đang mở
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+        function closeBMI() {
+            document.getElementById('bmiOverlay').style.display = 'none';
+            document.getElementById('bmi-result').style.display = 'none';
+        }
+        // đóng khi click nền
+        document.getElementById('bmiOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeBMI();
+        });
+
+        function calcBMIOverlay() {
+            var h = parseFloat(document.getElementById('bmi-h').value);
+            var w = parseFloat(document.getElementById('bmi-w').value);
+            if (!h || !w || h <= 0 || w <= 0) return;
+            var bmi = w / ((h / 100) * (h / 100));
+            var val = Math.round(bmi * 10) / 10;
+
+            var label, pct;
+            if (bmi < 18.5)       { label = '🔵 Thiếu cân';   pct = (bmi / 18.5) * 20; }
+            else if (bmi < 25)    { label = '🟢 Bình thường';  pct = 20 + ((bmi - 18.5) / 6.5) * 30; }
+            else if (bmi < 30)    { label = '🟠 Thừa cân';     pct = 50 + ((bmi - 25) / 5) * 25; }
+            else                  { label = '🔴 Béo phì';      pct = 75 + Math.min(((bmi - 30) / 10) * 25, 25); }
+
+            document.getElementById('bmi-num').textContent = val;
+            document.getElementById('bmi-tag').textContent = label;
+            document.getElementById('bmi-marker').style.left = Math.min(pct, 97) + '%';
+            document.getElementById('bmi-result').style.display = 'block';
+        }
+</script>
 </body>
 </html>

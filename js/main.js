@@ -596,3 +596,29 @@ allVideos.forEach(function(video) {
     if (video.paused) 
         { video.play(); } else { video.pause(); } }); });
 
+// ==========================================
+// CONTACT FORM - SEND TO GMAIL
+// ==========================================
+function sendToEmail(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('userName').value;
+    const phone = document.getElementById('userPhone').value;
+    const message = document.getElementById('userMessage').value;
+
+    const subject = encodeURIComponent('Đăng ký tập luyện - ' + name);
+    const body = encodeURIComponent(
+        'THÔNG TIN ĐĂNG KÝ\n\n' +
+        '👤 Họ và tên: ' + name + '\n' +
+        '📞 Số điện thoại: ' + phone + '\n' +
+        '🎯 Mục tiêu: ' + message
+    );
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=khanhlyfitx@gmail.com&su=${subject}&body=${body}`;
+
+    // mở gmail
+    window.open(gmailUrl, '_blank');
+
+    // reset form
+    document.getElementById('contactForm').reset();
+}
