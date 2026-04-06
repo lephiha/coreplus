@@ -150,108 +150,141 @@
     .hero-slider {
         margin-top: 64px;
         height: calc(100vh - 64px);
-        min-height: 500px;
+        min-height: 560px;
     }
 
-    /* ---- SLIDE 1: ảnh to trên, chữ FITX-06 dưới ---- */
+    /* ---- SLIDE 1 ---- */
     .slide-1 .slide-content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-end;
-        padding-bottom: 80px;
+        justify-content: center;
+        height: 100%;
+        position: relative;
     }
 
+    /* Ảnh giữa màn hình */
     .slide-1 .slide-image {
-        position: relative;
-        transform: none;
-        left: auto;
-        bottom: auto;
-        opacity: 1 !important;
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        position: absolute !important;
+        left: 50% !important;
+        top: 45% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90% !important;
         z-index: 5;
+        opacity: 1 !important;
     }
 
     .slide-1 .slide-image img {
-        height: 52vw;
-        max-height: 340px;
+        width: 100% !important;
+        height: auto !important;
+        max-height: 55vw !important;
         object-fit: contain;
-        animation: none !important;
         opacity: 1 !important;
         transform: none !important;
+        animation: none !important;
     }
 
-    /* Chữ FITX + -06 xếp ngang dưới ảnh */
-    .slide-title {
-        position: relative;
+    /* FITX bên trái */
+    .slide-title:not(.slide-title-front) {
+        position: absolute !important;
+        bottom: 40px !important;
+        left: 0 !important;
         top: auto !important;
-        left: auto !important;
         transform: none !important;
-        font-size: 20vw;
-        letter-spacing: -1px;
+        font-size: 22vw !important;
+        letter-spacing: -2px;
         opacity: 1 !important;
         animation: none !important;
-        line-height: 1;
+        z-index: 10;
     }
 
-    .slide-1 .slide-content {
-        flex-direction: column;
-        gap: 0;
+    /* -06 bên phải */
+    .slide-title-front {
+        position: absolute !important;
+        bottom: 40px !important;
+        left: auto !important;
+        right: 0 !important;
+        top: auto !important;
+        transform: none !important;
+        font-size: 22vw !important;
+        letter-spacing: -2px;
+        opacity: 1 !important;
+        animation: none !important;
+        z-index: 10;
     }
-    
+
+    /* ---- SLIDE 2 & 3 ---- */
     .slide-2 .slide-content,
     .slide-3 .slide-content {
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
         align-items: center;
-        padding: 30px 20px 20px;
-        text-align: center;
-        gap: 0;
-        height: 100%;
         justify-content: center;
+        padding: 20px 20px 60px;
+        text-align: center;
+        height: 100%;
+        gap: 0;
     }
 
     .slide-text-left {
         order: 1;
         width: 100%;
+        transform: none !important;
+        animation: none !important;
+        opacity: 1 !important;
     }
 
     .slide-image-right {
         order: 2;
-        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
         transform: none !important;
+        animation: none !important;
+        opacity: 1 !important;
+        margin-top: 10px;
     }
 
     .slide-image-right img {
-        height: 38vw;
+        height: 36vh !important;
         max-height: 260px;
+        width: auto;
+        object-fit: contain;
     }
 
     .slide-heading {
-        font-size: 32px;
-        margin-bottom: 10px;
+        font-size: 30px;
+        margin-bottom: 8px;
+        line-height: 1.2;
     }
 
     .slide-description {
         font-size: 14px;
         max-width: 100%;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
+        line-height: 1.5;
     }
 
     .slide-divider {
-        margin: 0 auto 16px;
+        margin: 0 auto 14px;
+        transform: scaleX(1) !important;
+        opacity: 1 !important;
+        animation: none !important;
     }
 
     .background-text {
-        font-size: 60px;
+        font-size: 55px;
+        animation: none !important;
+        opacity: 0.04 !important;
+        transform: none !important;
     }
 
     .slide-dots-custom {
         left: 50%;
         transform: translateX(-50%);
-        bottom: 12px;
+        bottom: 20px;
+        opacity: 1 !important;
+        animation: none !important;
     }
 
     .slide-indicators {
@@ -259,8 +292,14 @@
     }
 
     .cta-btn {
-        padding: 11px 24px;
+        padding: 12px 28px;
         font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-heading {
+        font-size: 26px;
     }
 }
 
