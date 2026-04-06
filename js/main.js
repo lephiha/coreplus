@@ -19,42 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===================================
-    // SIDEBAR MENU
-    // ===================================
-    const menuBtn = document.getElementById('menuBtn');
-    const sidebar = document.getElementById('sidebar');
-    const closeBtn = document.getElementById('closeBtn');
-    const overlay = document.getElementById('overlay');
-
-    // Open sidebar
-    if (menuBtn) {
-        menuBtn.addEventListener('click', function() {
-            sidebar.classList.add('open');
-            overlay.classList.add('open');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        });
-    }
-
-    // Close sidebar
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeSidebar);
-    }
-
-    // Close sidebar when clicking overlay
-    if (overlay) {
-        overlay.addEventListener('click', function() {
-            closeSidebar();
-            closeSearch();
-        });
-    }
-
-    function closeSidebar() {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('open');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-
-    // ===================================
     // SEARCH OVERLAY
     // ===================================
     const searchBtn = document.getElementById('searchBtn');
@@ -623,24 +587,74 @@ function sendToEmail(event) {
     document.getElementById('contactForm').reset();
 }
 
-// Mobile Nav
+// ===================================
+// SIDEBAR — 3 gạch mở
+// ===================================
+const menuBtn = document.getElementById('menuBtn');
+const sidebar = document.getElementById('sidebar');
+const closeBtn = document.getElementById('closeBtn');
+const overlay = document.getElementById('overlay');
+
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeSidebar);
+}
+
+// ===================================
+// MOBILE NAV — grid icon mở
+// ===================================
+const gridBtn = document.getElementById('gridBtn');
 const mobileNav = document.getElementById('mobileNav');
 const mobileNavClose = document.getElementById('mobileNavClose');
 
-menuBtn.addEventListener('click', () => {
-    mobileNav.classList.toggle('open');
-    overlay.classList.toggle('open');
-});
-
-mobileNavClose.addEventListener('click', () => {
-    mobileNav.classList.remove('open');
+function closeMobileNav() {
+    if (mobileNav) mobileNav.classList.remove('open');
     overlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+if (gridBtn) {
+    gridBtn.addEventListener('click', () => {
+        mobileNav.classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', closeMobileNav);
+}
+
+document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
 });
 
-// Đóng khi click link
-document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
-        overlay.classList.remove('open');
+// ===================================
+// OVERLAY + ESC — đóng tất cả
+// ===================================
+if (overlay) {
+    overlay.addEventListener('click', () => {
+        closeSidebar();
+        closeMobileNav();
     });
+}
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        closeSidebar();
+        closeMobileNav();
+    }
 });

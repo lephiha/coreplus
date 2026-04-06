@@ -673,3 +673,11 @@
         margin-bottom: 30px;
     }
 }
+
+@media (min-width: 769px) {
+    #gridBtn { display: none; }
+}
+
+@media (max-width: 768px) {
+    #gridBtn { display: flex; align-items: center; }
+}
