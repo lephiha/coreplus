@@ -371,39 +371,6 @@ header.scrolled {
     }
 }
 
-@media (max-width: 768px) {
-    .slide-title {
-        font-size: 70px;
-        letter-spacing: -2px;
-    }
-    
-    .slide-title:first-of-type {
-        left: 50%;
-        transform: translate(-100%, -50%);
-        top: 30%;
-    }
-    
-    .slide-title-front {
-        left: 50%;
-        transform: translate(0, -50%);
-        top: 30%;
-    }
-    
-    .slide-image {
-        opacity: 0.5 !important;
-    }
-    
-    .slide-image img {
-        height: 60vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .slide-title {
-        font-size: 50px;
-        letter-spacing: -1px;
-    }
-}
 
 .slide-2 .slide-content,
 .slide-3 .slide-content {
