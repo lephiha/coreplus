@@ -647,3 +647,100 @@ if (overlay) {
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeSidebar(); closeMobileNav(); }
 });
+
+// ===================================
+// DRAGGABLE FLOATING BUBBLES
+// ===================================
+const floatBubbles = document.querySelector('.float-bubbles');
+
+if (floatBubbles) {
+    let isDragging = false;
+    let startX, startY, startLeft, startBottom;
+    let moved = false;
+
+    // Mouse events (desktop)
+    floatBubbles.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        moved = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = floatBubbles.getBoundingClientRect();
+        startLeft = rect.left;
+        startBottom = window.innerHeight - rect.bottom;
+        floatBubbles.style.transition = 'none';
+        floatBubbles.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+
+        let newLeft = startLeft + dx;
+        let newBottom = startBottom - dy;
+
+        // Giới hạn trong màn hình
+        const w = floatBubbles.offsetWidth;
+        const h = floatBubbles.offsetHeight;
+        newLeft = Math.max(10, Math.min(window.innerWidth - w - 10, newLeft));
+        newBottom = Math.max(10, Math.min(window.innerHeight - h - 10, newBottom));
+
+        floatBubbles.style.left = newLeft + 'px';
+        floatBubbles.style.bottom = newBottom + 'px';
+        floatBubbles.style.right = 'auto';
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        floatBubbles.style.cursor = 'grab';
+        floatBubbles.style.transition = 'transform 0.2s ease';
+    });
+
+    // Touch events (mobile)
+    floatBubbles.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        moved = false;
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        const rect = floatBubbles.getBoundingClientRect();
+        startLeft = rect.left;
+        startBottom = window.innerHeight - rect.bottom;
+        floatBubbles.style.transition = 'none';
+    }, { passive: true });
+
+    floatBubbles.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+
+        let newLeft = startLeft + dx;
+        let newBottom = startBottom - dy;
+
+        const w = floatBubbles.offsetWidth;
+        const h = floatBubbles.offsetHeight;
+        newLeft = Math.max(10, Math.min(window.innerWidth - w - 10, newLeft));
+        newBottom = Math.max(10, Math.min(window.innerHeight - h - 10, newBottom));
+
+        floatBubbles.style.left = newLeft + 'px';
+        floatBubbles.style.bottom = newBottom + 'px';
+        floatBubbles.style.right = 'auto';
+        e.preventDefault();
+    }, { passive: false });
+
+    floatBubbles.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    // Nếu kéo thì không trigger click
+    floatBubbles.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (moved) e.preventDefault();
+        });
+    });
+}
