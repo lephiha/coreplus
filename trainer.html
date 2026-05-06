@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huấn Luyện Viên – FITX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background: #fff; color: #1f2937; }
+
+        .td-hero {
+            margin-top: 80px; /* bù header fixed */
+            position: relative;
+            height: 220px;
+            background: #111 url('./images/fit-group.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+        }
+        .td-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.72) 100%);
+        }
+        .td-hero-inner {
+            position: relative; z-index: 1;
+            max-width: 1100px; margin: 0 auto; width: 100%;
+            padding: 0 40px 28px;
+        }
+        .td-back-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: transparent; color: #ddd;
+            border: 1px solid rgba(255,255,255,.3);
+            padding: 7px 16px; border-radius: 6px;
+            font-size: 13px; font-weight: 600;
+            text-decoration: none; margin-bottom: 10px;
+            transition: all .2s; font-family: inherit; cursor: pointer;
+        }
+        .td-back-btn:hover { border-color: #E74C3C; color: #E74C3C; }
+        .td-hero-title {
+            font-size: clamp(26px, 4vw, 42px);
+            font-weight: 900; color: #fff;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        .td-content {
+            max-width: 1100px; margin: 0 auto;
+            padding: 52px 40px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* LEFT – photo */
+        .td-photo-box {
+            position: relative;
+            border-radius: 10px; overflow: hidden;
+            height: 400px;
+            background: #f0f0f0;
+        }
+        .td-photo-box img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: top;
+            display: block;
+        }
+        /* red bar accent top-left */
+        .td-photo-accent {
+            position: absolute; top: 0; left: 0;
+            width: 7px; height: 55%;
+            background: #E74C3C;
+        }
+        .td-social-row {
+            display: flex; gap: 8px; margin-top: 16px;
+        }
+        .td-soc {
+            width: 34px; height: 34px; border-radius: 6px;
+            border: 1px solid #ddd;
+            display: flex; align-items: center; justify-content: center;
+            color: #888; font-size: 12px; font-weight: 700;
+            text-decoration: none; transition: all .2s;
+        }
+        .td-soc:hover { border-color: #E74C3C; color: #E74C3C; }
+
+        /* RIGHT – info */
+        .td-block-label {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            color: #999; border-bottom: 1px solid #eee;
+            padding-bottom: 10px; margin-bottom: 16px;
+        }
+        .td-info-table { display: flex; flex-direction: column; gap: 10px; }
+        .td-info-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 120px 1fr;
+            gap: 6px 16px; align-items: baseline;
+        }
+        .td-key { font-size: 13px; color: #999; }
+        .td-val { font-size: 14px; font-weight: 600; color: #1f2937; }
+
+        .td-intro-text {
+            font-size: 15px; color: #666; line-height: 1.85;
+        }
+
+        /* Skill bars */
+        .td-skills { display: flex; flex-direction: column; gap: 18px; }
+        .td-skill-header {
+            display: flex; justify-content: space-between;
+            font-size: 14px; margin-bottom: 7px;
+        }
+        .td-skill-name { font-weight: 600; color: #333; }
+        .td-skill-pct  { color: #999; }
+        .td-skill-track {
+            height: 5px; background: #eee;
+            border-radius: 100px; overflow: hidden;
+        }
+        .td-skill-fill {
+            height: 100%; background: #E74C3C;
+            border-radius: 100px;
+            width: 0; transition: width 1s ease .2s;
+        }
+
+        /* ══════════════════════════════════════
+           PREV / NEXT NAV
+           ══════════════════════════════════════ */
+        .td-nav {
+            max-width: 1100px; margin: 0 auto;
+            padding: 24px 40px 56px;
+            border-top: 1px solid #eee;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .td-nav-link {
+            display: flex; flex-direction: column;
+            text-decoration: none; color: #333;
+            padding: 12px 20px; border: 1px solid #ddd;
+            border-radius: 8px; transition: all .2s;
+            min-width: 180px;
+        }
+        .td-nav-link:hover { border-color: #E74C3C; color: #E74C3C; }
+        .td-nav-link.right { text-align: right; }
+        .td-nav-label { font-size: 11px; color: #aaa; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+        .td-nav-name  { font-size: 14px; font-weight: 700; }
+        .td-nav-hidden { visibility: hidden; }
+
+        /* ══════════════════════════════════════
+           RESPONSIVE
+           ══════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .td-content { grid-template-columns: 1fr; padding: 36px 20px; gap: 36px; }
+            .td-photo-box { height: 320px; }
+            .td-info-row { grid-template-columns: 1fr 1fr; }
+            .td-hero-inner { padding: 0 20px 24px; }
+            .td-nav { padding: 20px; flex-wrap: wrap; gap: 12px; }
+            .td-nav-link { min-width: 140px; }
+        }
+        @media (max-width: 480px) {
+            .td-hero { margin-top: 70px; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER – copy từ index.html -->
+    <header id="header">
+        <div class="logo">
+            <a href="index.html" class="logo">
+                <img src="./images/logo.png" alt="FitX-06 Logo">
+                <div class="logo-text">
+                    <span class="logo-name">
+                        <span class="logo-white">FITX</span><span class="logo-orange">-06</span>
+                    </span>
+                    <span class="logo-subtitle">Tập Là Thích</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html#home">Trang Chủ</a>
+            <a href="index.html#services">Dịch Vụ</a>
+            <a href="index.html#about" class="active">Huấn Luyện Viên</a>
+            <a href="index.html#testimonials">Nhận Xét</a>
+            <a href="index.html#locations">Cơ Sở Phòng Tập</a>
+            <a href="index.html#contact">Liên Hệ</a>
+        </nav>
+
+    </header>
+
+    <!-- HERO BANNER -->
+    <div class="td-hero">
+        <div class="td-hero-overlay"></div>
+        <div class="td-hero-inner">
+            <a href="index.html#about" class="td-back-btn">← Quay lại</a>
+            <h1 class="td-hero-title">Huấn Luyện Viên</h1>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="td-content">
+        <!-- Left: Photo -->
+        <div>
+            <div class="td-photo-box">
+                <img id="tdImg" src="" alt="">
+                <div class="td-photo-accent"></div>
+            </div>
+            <div class="td-social-row">
+                <a href="#" class="td-soc">f</a>
+                <a href="#" class="td-soc">tw</a>
+                <a href="#" class="td-soc">in</a>
+            </div>
+        </div>
+
+        <!-- Right: Info -->
+        <div>
+            <p class="td-block-label">INFORMATION</p>
+            <div class="td-info-table">
+                <div class="td-info-row">
+                    <span class="td-key">Tên</span>
+                    <span id="tdName" class="td-val"></span>
+                    <span class="td-key">Chuyên môn</span>
+                    <span id="tdSpecial" class="td-val"></span>
+                </div>
+                <div class="td-info-row">
+                    <span class="td-key">Kinh nghiệm</span>
+                    <span id="tdExp" class="td-val"></span>
+                    <span class="td-key">Điện thoại</span>
+                    <span id="tdPhone" class="td-val"></span>
+                </div>
+                <div class="td-info-row">
+                    <span class="td-key">Bộ môn</span>
+                    <span id="tdClass" class="td-val"></span>
+                    <span class="td-key">Email</span>
+                    <span id="tdEmail" class="td-val"></span>
+                </div>
+            </div>
+
+            <p class="td-block-label" style="margin-top:32px;">Giới Thiệu</p>
+            <p id="tdIntro" class="td-intro-text"></p>
+
+            <p class="td-block-label" style="margin-top:32px;">Kỹ Năng</p>
+            <div id="tdSkills" class="td-skills"></div>
+        </div>
+    </div>
+
+    <!-- PREV / NEXT NAV -->
+    <div class="td-nav">
+        <a id="tdPrev" href="#" class="td-nav-link">
+            <span class="td-nav-label">← Trước</span>
+            <span id="tdPrevName" class="td-nav-name"></span>
+        </a>
+        <a id="tdNext" href="#" class="td-nav-link right">
+            <span class="td-nav-label">Tiếp →</span>
+            <span id="tdNextName" class="td-nav-name"></span>
+        </a>
+    </div>
+
+    <!-- JS -->
+    <script>
+    const trainersData = [
+        {
+            name:    'Nguyễn Khánh Ly',
+            special: 'Nhà Sáng Lập – Lead Trainer',
+            exp:     '7+ năm',
+            phone:   '0945.920.368',
+            email:   'fitx@gmail.com',
+            classes: 'X-BALANCE',
+            photo:   './images/mrTan.png',
+            intro:   'Xin chào, tôi là Nguyễn Khánh Ly – Nhà sáng lập và là Huấn luyện viên hệ thống chăm sóc sức khoẻ chủ động FITX. Tôi cùng đội ngũ FITX xây dựng một môi trường rèn luyện toàn diện, nơi bạn được chăm sóc thể chất – dinh dưỡng – tinh thần một cách khoa học, cá nhân hoá và bền vững. Hãy để tôi giúp bạn đạt được phiên bản tốt nhất của chính mình!',
+            skills: [
+                { name: 'X-BALANCE',             pct: 97 },
+                { name: 'Yoga & Pilates',         pct: 88 },
+                { name: 'Dinh dưỡng',             pct: 85 },
+                { name: 'Quản lý chương trình',   pct: 90 },
+            ]
+        },
+        {
+            name:    'Nguyễn Minh Tấn',
+            special: 'Lead Coach',
+            exp:     '5+ năm',
+            phone:   '0945.920.368',
+            email:   'minhitanfitx@gmail.com',
+            classes: 'X-FIT, X-STEP',
+            photo:   './images/fit1.jpg',
+            intro:   'Tôi là Nguyễn Minh Tấn – Huấn luyện viên thuộc hệ thống FITX. Với hơn 5 năm kinh nghiệm, tôi chuyên sâu về X-FIT và X-STEP – các bộ môn giúp tăng sức mạnh, đốt cháy năng lượng và định hình vóc dáng săn chắc. Mỗi học viên đều có giáo án riêng, theo dõi tiến độ chi tiết và được hỗ trợ liên tục.',
+            skills: [
+                { name: 'X-FIT / Sức mạnh',  pct: 95 },
+                { name: 'X-STEP / Cardio',    pct: 90 },
+                { name: 'Dinh dưỡng',         pct: 80 },
+                { name: 'Tư vấn cá nhân',     pct: 95 },
+            ]
+        },
+        {
+            name:    'Huấn Luyện Viên',
+            special: 'Chuyên Gia X-STEP',
+            exp:     '3+ năm',
+            phone:   '0945.920.368',
+            email:   'fitx@gmail.com',
+            classes: 'X-STEP',
+            photo:   './images/fit2.jpg',
+            intro:   'Chuyên gia X-STEP với niềm đam mê mãnh liệt với nhảy bục và vận động nhịp điệu. Các buổi tập luôn tràn đầy năng lượng, vui vẻ và hiệu quả cao trong việc đốt cháy calo, giải toả stress và nâng cao sức bền tim mạch.',
+            skills: [
+                { name: 'X-STEP / Nhảy bục',    pct: 96 },
+                { name: 'Cardio',               pct: 88 },
+                { name: 'Nhịp điệu & Âm nhạc', pct: 85 },
+                { name: 'Nhóm & Cộng đồng',     pct: 80 },
+            ]
+        },
+        {
+            name:    'Huấn Luyện Viên',
+            special: 'Chuyên Gia X-FIT',
+            exp:     '4+ năm',
+            phone:   '0945.920.368',
+            email:   'fitx@gmail.com',
+            classes: 'X-FIT',
+            photo:   './images/fit3.jpg',
+            intro:   'Huấn luyện viên chuyên sâu X-FIT với phương pháp kháng lực khoa học. Tôi giúp học viên xây dựng cơ bắp, tăng sức mạnh và định hình vóc dáng săn chắc thông qua các bài tập được cá nhân hoá hoàn toàn.',
+            skills: [
+                { name: 'X-FIT / Kháng lực',  pct: 94 },
+                { name: 'Tăng cơ & Giảm mỡ', pct: 90 },
+                { name: 'Giáo án cá nhân',    pct: 88 },
+                { name: 'Tư vấn thể hình',    pct: 85 },
+            ]
+        },
+        {
+            name:    'Huấn Luyện Viên',
+            special: 'Dinh Dưỡng & Cardio',
+            exp:     '4+ năm',
+            phone:   '0945.920.368',
+            email:   'fitx@gmail.com',
+            classes: 'X-FIT, Tư vấn dinh dưỡng',
+            photo:   './images/fit4.jpg',
+            intro:   'Chuyên gia kết hợp Cardio cường độ cao và tư vấn dinh dưỡng thể thao. Tôi tin rằng một cơ thể khoẻ mạnh bắt đầu từ chế độ dinh dưỡng đúng đắn kết hợp với lộ trình vận động phù hợp từng cá nhân.',
+            skills: [
+                { name: 'Cardio & Sức bền',    pct: 92 },
+                { name: 'Dinh dưỡng thể thao', pct: 90 },
+                { name: 'Giảm cân khoa học',   pct: 88 },
+                { name: 'Online Coaching',     pct: 82 },
+            ]
+        }
+    ];
+
+    // Đọc id từ URL: trainer.html?id=0
+    const params = new URLSearchParams(window.location.search);
+    const idx = parseInt(params.get('id')) || 0;
+    const t = trainersData[idx] || trainersData[0];
+
+    // Điền dữ liệu
+    document.title = t.name + ' – FITX';
+    document.getElementById('tdImg').src          = t.photo;
+    document.getElementById('tdImg').alt          = t.name;
+    document.getElementById('tdName').textContent    = t.name;
+    document.getElementById('tdSpecial').textContent = t.special;
+    document.getElementById('tdExp').textContent     = t.exp;
+    document.getElementById('tdPhone').textContent   = t.phone;
+    document.getElementById('tdEmail').textContent   = t.email;
+    document.getElementById('tdClass').textContent   = t.classes;
+    document.getElementById('tdIntro').textContent   = t.intro;
+
+    // Skills
+    document.getElementById('tdSkills').innerHTML = t.skills.map(s => `
+        <div>
+            <div class="td-skill-header">
+                <span class="td-skill-name">${s.name}</span>
+                <span class="td-skill-pct">${s.pct}%</span>
+            </div>
+            <div class="td-skill-track">
+                <div class="td-skill-fill" data-pct="${s.pct}"></div>
+            </div>
+        </div>
+    `).join('');
+
+    // Prev / Next
+    const prevEl = document.getElementById('tdPrev');
+    const nextEl = document.getElementById('tdNext');
+
+    if (idx > 0) {
+        prevEl.href = 'trainer.html?id=' + (idx - 1);
+        document.getElementById('tdPrevName').textContent = trainersData[idx - 1].name;
+    } else {
+        prevEl.classList.add('td-nav-hidden');
+    }
+
+    if (idx < trainersData.length - 1) {
+        nextEl.href = 'trainer.html?id=' + (idx + 1);
+        document.getElementById('tdNextName').textContent = trainersData[idx + 1].name;
+    } else {
+        nextEl.classList.add('td-nav-hidden');
+    }
+
+    // Animate skill bars sau khi load
+    window.addEventListener('load', () => {
+        document.querySelectorAll('.td-skill-fill').forEach(el => {
+            el.style.width = el.dataset.pct + '%';
+        });
+    });
+
+    // Header scroll (giống index)
+    window.addEventListener('scroll', () => {
+        document.getElementById('header')?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    </script>
+
+</body>
+</html>
